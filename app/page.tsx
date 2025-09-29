@@ -212,28 +212,67 @@ const ServiceCard = ({ title, desc }) => (
 
 const Services = () => (
   <Section id="services">
-    <div className="text-center mb-8">
-      <h2 className="text-3xl font-black tracking-tight">Services</h2>
-      <p className="text-neutral-600 mt-2">
-        Full-service representation for residential &amp; investment real estate.
+    {/* Heading */}
+    <div className="text-center mb-12">
+      <h2 className="text-3xl sm:text-4xl font-black tracking-tight">
+        Our <GradientText>Services</GradientText>
+      </h2>
+      <p className="text-neutral-600 mt-3 text-base sm:text-lg">
+        Comprehensive real estate solutions across Miami and all of Florida.
       </p>
     </div>
-    <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-      <ServiceCard
-        title="Buyer Representation"
-        desc="Strategy, search, negotiation, inspections, lending guidance, and closing support."
-      />
-      <ServiceCard
-        title="Listing & Marketing"
-        desc="Pro photos/video, staging guidance, pricing strategy, digital ads, and MLS syndication."
-      />
-      <ServiceCard
-        title="Investors & Rentals"
-        desc="Acquisitions, rental analysis, tenant screening, and property positioning."
-      />
+
+    {/* Cards */}
+    <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+      {[
+        {
+          title: "Buying a Home",
+          desc: "Guidance through every step of purchasing your dream home.",
+          icon: Home,
+        },
+        {
+          title: "Selling a Home",
+          desc: "Marketing strategies and expert negotiation to maximize your sale.",
+          icon: Globe,
+        },
+        {
+          title: "Investment Properties",
+          desc: "Identify and acquire profitable opportunities.",
+          icon: Shield,
+        },
+        {
+          title: "Rentals",
+          desc: "Reliable rental solutions for tenants and landlords.",
+          icon: Building2,
+        },
+        {
+          title: "Consulting",
+          desc: "Advice on market trends, financing, and strategies.",
+          icon: Users,
+        },
+        {
+          title: "Commercial Properties",
+          desc: "Sell, buy, or lease your next commercial property with us.",
+          icon: MapPin,
+        },
+      ].map((s) => (
+        <div
+          key={s.title}
+          className="rounded-2xl border bg-white p-6 sm:p-7 shadow-sm hover:shadow-md transition-shadow"
+        >
+          <div className="flex items-center gap-4">
+            <div className="shrink-0 rounded-xl border p-3">
+              <s.icon size={28} className="text-purple-700" />
+            </div>
+            <h3 className="font-bold text-xl">{s.title}</h3>
+          </div>
+          <p className="mt-4 text-neutral-600 leading-relaxed">{s.desc}</p>
+        </div>
+      ))}
     </div>
   </Section>
 );
+
 
 const Footer = () => (
   <footer className="mt-10">
