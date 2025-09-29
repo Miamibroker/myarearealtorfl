@@ -350,9 +350,9 @@ const Footer = () => (
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-white grid sm:grid-cols-2 gap-8">
         <div className="flex items-center gap-3">
           <img 
-            src="/logo-white.png" 
-            alt="" 
-            className="h-14 w-auto object-contain brightness-0 invert" 
+  src="/logo-white.png" 
+  alt="Area Co Real Estate Logo" 
+  className="h-14 w-auto object-contain" 
           />
           <div>
             <div className="font-black text-lg">{BRAND.name}</div>
