@@ -220,6 +220,39 @@ const Footer = () => (
     <div className="bg-neutral-950 text-white/70 text-xs py-3 text-center">© {new Date().getFullYear()} {BRAND.name}. All rights reserved.</div>
   </footer>
 );
+// --- Services ---
+const ServiceCard = ({ title, desc }: { title: string; desc: string }) => (
+  <div className="rounded-2xl border bg-white p-6 shadow-sm">
+    <h3 className="text-lg font-semibold">{title}</h3>
+    <p className="mt-2 text-neutral-600">{desc}</p>
+  </div>
+);
+
+const Services = () => (
+  <Section id="services">
+    <div className="text-center mb-8">
+      <h2 className="text-3xl font-black tracking-tight">Services</h2>
+      <p className="text-neutral-600 mt-2">
+        Full-service representation for residential &amp; investment real estate.
+      </p>
+    </div>
+
+    <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <ServiceCard
+        title="Buyer Representation"
+        desc="Strategy, search, negotiation, inspections, lending guidance, and closing support."
+      />
+      <ServiceCard
+        title="Listing & Marketing"
+        desc="Pro photos/video, staging guidance, pricing strategy, digital ads, and MLS syndication."
+      />
+      <ServiceCard
+        title="Investors & Rentals"
+        desc="Acquisitions, rental analysis, tenant screening, and property positioning."
+      />
+    </div>
+  </Section>
+);
 
 export default function Page() {
   const [current, setCurrent] = useState("home"); // set "search" to make MLS tab the default
