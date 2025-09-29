@@ -128,12 +128,12 @@ const FEATURED = [
     url: "https://sef.mlsmatrix.com/matrix/shared/vKDB20nWrmg/6065WaycrossDRIVE",
   },
   {
-    img: "https://your-image-link-2.jpg",
-    url: "https://sef.mlsmatrix.com/matrix/shared/ExampleLink2",
+    img: "https://media.sef.mlsmatrix.com/MediaServer/GetMedia.ashx?Key=419319240&TableID=9&Type=1&Number=0&Size=5&exk=659e807b18fc5993205ad04af93c26fd",
+    url: "https://sef.mlsmatrix.com/matrix/shared/fsClMwsXrmg/2417SE14thSt",
   },
   {
-    img: "https://your-image-link-3.jpg",
-    url: "https://sef.mlsmatrix.com/matrix/shared/ExampleLink3",
+    img: "https://media.sef.mlsmatrix.com/MediaServer/GetMedia.ashx?Key=418493978&TableID=9&Type=1&Number=0&Size=5&exk=5164cd1c8fa68aca8767e1ebe954ff63",
+    url: "https://sef.mlsmatrix.com/matrix/shared/7pYhQkxYrmg/13925SW26thTer",
   },
 ];
 
