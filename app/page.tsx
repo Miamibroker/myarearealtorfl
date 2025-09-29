@@ -352,7 +352,7 @@ const Footer = () => (
           <img 
             src="/logo-white.png" 
             alt="" 
-            className="h-14 w-14 rounded-full object-contain" 
+            className="h-14 w-auto object-contain brightness-0 invert" 
           />
           <div>
             <div className="font-black text-lg">{BRAND.name}</div>
