@@ -121,25 +121,52 @@ const Hero = () => (
   </div>
 );
 
+// Featured Properties Section
+const FEATURED = [
+  {
+    img: "https://media.sef.mlsmatrix.com/MediaServer/GetMedia.ashx?Key=417075654&TableID=9&Type=1&Number=0&Size=5&exk=15d2db823ee04829ef4a4f82cc1d5d0e",
+    url: "https://sef.mlsmatrix.com/matrix/shared/vKDB20nWrmg/6065WaycrossDRIVE",
+  },
+  {
+    img: "https://your-image-link-2.jpg",
+    url: "https://sef.mlsmatrix.com/matrix/shared/ExampleLink2",
+  },
+  {
+    img: "https://your-image-link-3.jpg",
+    url: "https://sef.mlsmatrix.com/matrix/shared/ExampleLink3",
+  },
+];
+
 const Photos = () => (
   <Section id="photos">
     <div className="text-center mb-8">
-      <h2 className="text-3xl font-black tracking-tight">Featured <GradientText>Properties</GradientText></h2>
-      <p className="text-neutral-600 mt-2">A glimpse at some of our recent listings.</p>
+      <h2 className="text-3xl font-black tracking-tight">
+        Featured <GradientText>Properties</GradientText>
+      </h2>
+      <p className="text-neutral-600 mt-2">
+        A glimpse at some of our recent listings.
+      </p>
     </div>
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      {[
-        "https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=1200&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1505692794403-34d4982f88aa?q=80&w=1200&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1502005229762-cf1b2da7c52f?q=80&w=1200&auto=format&fit=crop",
-      ].map((src, i) => (
-        <div key={i} className="overflow-hidden rounded-2xl shadow-sm border bg-white/50">
-          <img src={src} alt={`Property ${i + 1}`} className="object-cover w-full h-56 hover:scale-105 transition-transform duration-500" />
-        </div>
+      {FEATURED.map((p, i) => (
+        <a
+          key={i}
+          href={p.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="overflow-hidden rounded-2xl shadow-sm border bg-white/50 block"
+        >
+          <img
+            src={p.img}
+            alt={`Property ${i + 1}`}
+            className="object-cover w-full h-56 hover:scale-105 transition-transform duration-500"
+          />
+        </a>
       ))}
     </div>
   </Section>
 );
+
 
 const MLSSearch = () => (
   <Section id="search">
