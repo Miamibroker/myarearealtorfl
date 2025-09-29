@@ -251,6 +251,107 @@ const Footer = () => (
     <div className="bg-neutral-950 text-white/70 text-xs py-3 text-center">© {new Date().getFullYear()} {BRAND.name}. All rights reserved.</div>
   </footer>
 );
+// ADD inside app/page.tsx
+
+const Contact = () => (
+  <Section id="contact">
+    <div className="text-center mb-8">
+      <h2 className="text-3xl font-black tracking-tight">
+        Get in <GradientText>Touch</GradientText>
+      </h2>
+      <p className="text-neutral-600 mt-2">
+        We’re ready to help with buying, selling, investing, and more.
+      </p>
+    </div>
+
+    <div className="grid lg:grid-cols-2 gap-6">
+      {/* Contact card */}
+      <div className="rounded-2xl border bg-white/90 p-6 shadow-sm">
+        <div className="space-y-3 text-sm">
+          <a href="tel:7868633549" className="flex items-center gap-2 hover:underline">
+            <Phone size={16} /> (786) 863-3549
+          </a>
+          <a href="mailto:gabriel@myarearealtor.com" className="flex items-center gap-2 hover:underline">
+            <Mail size={16} /> gabriel@myarearealtor.com
+          </a>
+          <div className="flex items-start gap-2">
+            <MapPin size={16} />
+            <span>8400 NW 33rd St, Doral, FL 33122</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Printer size={16} /> Fax: 1.866.882.1210
+          </div>
+        </div>
+
+        {/* Quick CTA buttons */}
+        <div className="mt-5 flex gap-3">
+          <a
+            href="mailto:gabriel@myarearealtor.com?subject=Area%20Co%20Inquiry"
+            className="inline-flex items-center gap-2 rounded-2xl px-4 py-2 font-semibold text-white"
+            style={{ background: "linear-gradient(135deg, #d414a4, #4b1ea8)" }}
+          >
+            Email Us
+          </a>
+          <a
+            href="tel:7868633549"
+            className="inline-flex items-center gap-2 rounded-2xl px-4 py-2 font-semibold border"
+          >
+            Call Now
+          </a>
+        </div>
+
+        {/* Simple form (submits via mailto for now) */}
+        <form
+          className="mt-6 grid gap-3"
+          action="mailto:gabriel@myarearealtor.com"
+          method="post"
+          encType="text/plain"
+        >
+          <input
+            required
+            name="name"
+            placeholder="Your name"
+            className="rounded-xl border px-3 py-2 outline-none"
+          />
+          <input
+            required
+            type="email"
+            name="email"
+            placeholder="Your email"
+            className="rounded-xl border px-3 py-2 outline-none"
+          />
+          <textarea
+            required
+            name="message"
+            placeholder="Tell us about your needs"
+            rows={4}
+            className="rounded-xl border px-3 py-2 outline-none"
+          />
+          <button
+            type="submit"
+            className="rounded-2xl px-4 py-2 font-semibold text-white"
+            style={{ background: "linear-gradient(135deg, #d414a4, #4b1ea8)" }}
+          >
+            Send Message
+          </button>
+        </form>
+      </div>
+
+      {/* Map */}
+      <div className="rounded-2xl overflow-hidden border shadow">
+        <iframe
+          title="Area Co Real Estate - Map"
+          width="100%"
+          height="100%"
+          className="min-h-[420px] w-full"
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=8400%20NW%2033rd%20St%2C%20Doral%2C%20FL%2033122&output=embed"
+        />
+      </div>
+    </div>
+  </Section>
+);
 
 export default function Page() {
   const [current, setCurrent] = useState("home");
