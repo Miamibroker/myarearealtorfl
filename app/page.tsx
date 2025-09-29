@@ -343,11 +343,21 @@ const Contact = () => (
 
 const Footer = () => (
   <footer className="mt-10">
-    <div className="py-10" style={{ background: `linear-gradient(135deg, ${BRAND.gradientFrom}, ${BRAND.gradientTo})` }}>
+    <div 
+      className="py-10" 
+      style={{ background: `linear-gradient(135deg, ${BRAND.gradientFrom}, ${BRAND.gradientTo})` }}
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-white grid sm:grid-cols-2 gap-8">
-        <div>
-          <div className="font-black text-lg">{BRAND.name}</div>
-          <div className="text-white/90 text-sm mt-1">{BRAND.tagline}</div>
+        <div className="flex items-center gap-3">
+          <img 
+            src={BRAND.logo} 
+            alt="Logo" 
+            className="h-12 w-12 rounded-full object-contain" 
+          />
+          <div>
+            <div className="font-black text-lg">{BRAND.name}</div>
+            <div className="text-white/90 text-sm mt-1">{BRAND.tagline}</div>
+          </div>
         </div>
         <div className="text-sm">
           <div className="font-semibold">Contact</div>
@@ -358,7 +368,9 @@ const Footer = () => (
         </div>
       </div>
     </div>
-    <div className="bg-neutral-950 text-white/70 text-xs py-3 text-center">© {new Date().getFullYear()} {BRAND.name}. All rights reserved.</div>
+    <div className="bg-neutral-950 text-white/70 text-xs py-3 text-center">
+      © {new Date().getFullYear()} {BRAND.name}. All rights reserved.
+    </div>
   </footer>
 );
 
