@@ -15,7 +15,7 @@ const BRAND = {
   fax: "1.866.882.1210",
   email: "gabriel@myarearealtor.com",
   tagline: "Licensed to serve you with all your real estate needs throughout the state of Florida.",
-  logo: "/logo.png", // make sure public/logo.png exists
+  logo: "/logo.png",
 };
 
 const AGENTS = [
@@ -33,14 +33,17 @@ const Section = ({ id, children }: React.PropsWithChildren<{ id: string }>) => (
 );
 
 const GradientText: React.FC<React.PropsWithChildren> = ({ children }) => (
-  <span className="bg-clip-text text-transparent"
-        style={{ backgroundImage: `linear-gradient(135deg, ${BRAND.gradientFrom}, ${BRAND.gradientTo})` }}>
+  <span
+    className="bg-clip-text text-transparent"
+    style={{ backgroundImage: `linear-gradient(135deg, ${BRAND.gradientFrom}, ${BRAND.gradientTo})` }}
+  >
     {children}
   </span>
 );
 
-const NavButton = ({ label, active, onClick, icon: Icon }:
-  { label: string; active: boolean; onClick: () => void; icon: any }) => (
+const NavButton = ({
+  label, active, onClick, icon: Icon,
+}: { label: string; active: boolean; onClick: () => void; icon: any }) => (
   <button
     onClick={onClick}
     className={`inline-flex items-center gap-2 rounded-2xl px-4 py-2 text-sm font-semibold transition-all ${active ? "scale-100" : "opacity-80 hover:opacity-100"}`}
@@ -48,7 +51,8 @@ const NavButton = ({ label, active, onClick, icon: Icon }:
       background: active ? `linear-gradient(135deg, ${BRAND.gradientFrom}, ${BRAND.gradientTo})` : "#ffffff",
       color: active ? "white" : "#2b1b3f",
       boxShadow: active ? "0 6px 20px rgba(79, 34, 140, .25)" : "0 1px 3px rgba(0,0,0,.08)",
-    }}>
+    }}
+  >
     <Icon size={16} />
     {label}
   </button>
@@ -69,7 +73,7 @@ const Header = ({ current, setCurrent }: { current: string; setCurrent: (s: stri
         <NavButton label="MLS Search" icon={SearchIcon} active={current === "search"} onClick={() => setCurrent("search")} />
         <NavButton label="Agents" icon={Users} active={current === "agents"} onClick={() => setCurrent("agents")} />
         <NavButton label="About" icon={Building2} active={current === "about"} onClick={() => setCurrent("about")} />
-        <NavButton label="Services" icon={Shield} active={current === "services" && <Services />}</NavButton>} onClick={() => setCurrent("services")} />
+        <NavButton label="Services" icon={Shield} active={current === "services"} onClick={() => setCurrent("services")} />
         <NavButton label="Contact" icon={Phone} active={current === "contact"} onClick={() => setCurrent("contact")} />
       </nav>
     </div>
@@ -98,6 +102,7 @@ const Hero = () => (
             </a>
           </div>
         </div>
+
         <div className="rounded-3xl shadow-2xl p-1 bg-white/10">
           <div className="rounded-3xl p-8 bg-white text-neutral-900">
             <div className="flex items-start gap-3">
@@ -114,6 +119,7 @@ const Hero = () => (
             </div>
           </div>
         </div>
+
       </div>
     </Section>
   </div>
@@ -220,59 +226,18 @@ const Footer = () => (
     <div className="bg-neutral-950 text-white/70 text-xs py-3 text-center">© {new Date().getFullYear()} {BRAND.name}. All rights reserved.</div>
   </footer>
 );
-// --- Services ---
-const ServiceCard = ({ title, desc }: { title: string; desc: string }) => (
-  <div className="rounded-2xl border bg-white p-6 shadow-sm">
-    <h3 className="text-lg font-semibold">{title}</h3>
-    <p className="mt-2 text-neutral-600">{desc}</p>
-  </div>
-);
-
-const Services = () => (
-  <Section id="services">
-    <div className="text-center mb-8">
-      <h2 className="text-3xl font-black tracking-tight">Services</h2>
-      <p className="text-neutral-600 mt-2">
-        Full-service representation for residential &amp; investment real estate.
-      </p>
-    </div>
-
-    <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-      <ServiceCard
-        title="Buyer Representation"
-        desc="Strategy, search, negotiation, inspections, lending guidance, and closing support."
-      />
-      <ServiceCard
-        title="Listing & Marketing"
-        desc="Pro photos/video, staging guidance, pricing strategy, digital ads, and MLS syndication."
-      />
-      <ServiceCard
-        title="Investors & Rentals"
-        desc="Acquisitions, rental analysis, tenant screening, and property positioning."
-      />
-    </div>
-  </Section>
-);
 
 export default function Page() {
-  const [current, setCurrent] = useState("home"); // set "search" to make MLS tab the default
+  const [current, setCurrent] = useState("home"); // change to "search" to make MLS default
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-900">
       <Header current={current} setCurrent={setCurrent} />
       {current === "home" && (<><Hero /><Photos /></>)}
       {current === "search" && <MLSSearch />}
       {current === "agents" && <Agents />}
-      {current === "about" && (
-        <Section id="about">
-          <div className="text-neutral-600">About content coming soon.</div>
-        </Section>
-      )}
-      {current === "services" && <Services />}
-      {current === "contact" && (
-        <Section id="contact">
-          <div className="text-neutral-600">Contact form coming soon.</div>
-        </Section>
-      )}
+      {current === "about" && <Section id="about"><div className="text-neutral-600">About content coming soon.</div></Section>}
+      {current === "services" && <Section id="services"><div className="text-neutral-600">Services content coming soon.</div></Section>}
+      {current === "contact" && <Section id="contact"><div className="text-neutral-600">Contact form coming soon.</div></Section>}
       <Footer />
     </div>
   );
