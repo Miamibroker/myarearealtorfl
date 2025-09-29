@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import {
   Phone, Mail, MapPin, Users, Building2, Home, Shield,
-  ArrowRight, Printer, Globe, Search as SearchIcon
+  ArrowRight, Printer, Search as SearchIcon
 } from "lucide-react";
 
 const BRAND = {
@@ -28,19 +28,20 @@ const AGENTS = [
   { name: "Gabriel Gonzalez", role: "Broker/Owner", phone: "786.863.3549", email: "Gabriel@Miamibroker.com" },
 ];
 
-const Section = ({ id, children }: React.PropsWithChildren<{ id: string }>) => (
+const Section = ({ id, children }) => (
   <section id={id} className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">{children}</section>
 );
 
-const GradientText: React.FC<React.PropsWithChildren> = ({ children }) => (
-  <span className="bg-clip-text text-transparent"
-        style={{ backgroundImage: `linear-gradient(135deg, ${BRAND.gradientFrom}, ${BRAND.gradientTo})` }}>
+const GradientText = ({ children }) => (
+  <span
+    className="bg-clip-text text-transparent"
+    style={{ backgroundImage: `linear-gradient(135deg, ${BRAND.gradientFrom}, ${BRAND.gradientTo})` }}
+  >
     {children}
   </span>
 );
 
-const NavButton = ({ label, active, onClick, icon: Icon }:
-  { label: string; active: boolean; onClick: () => void; icon: any }) => (
+const NavButton = ({ label, active, onClick, icon: Icon }) => (
   <button
     onClick={onClick}
     className={`inline-flex items-center gap-2 rounded-2xl px-4 py-2 text-sm font-semibold transition-all ${active ? "scale-100" : "opacity-80 hover:opacity-100"}`}
@@ -48,13 +49,14 @@ const NavButton = ({ label, active, onClick, icon: Icon }:
       background: active ? `linear-gradient(135deg, ${BRAND.gradientFrom}, ${BRAND.gradientTo})` : "#ffffff",
       color: active ? "white" : "#2b1b3f",
       boxShadow: active ? "0 6px 20px rgba(79, 34, 140, .25)" : "0 1px 3px rgba(0,0,0,.08)",
-    }}>
+    }}
+  >
     <Icon size={16} />
     {label}
   </button>
 );
 
-const Header = ({ current, setCurrent }: { current: string; setCurrent: (s: string) => void }) => (
+const Header = ({ current, setCurrent }) => (
   <header className="sticky top-0 z-40 backdrop-blur bg-white/70 border-b border-white/40">
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
       <div className="flex items-center gap-3">
@@ -70,7 +72,7 @@ const Header = ({ current, setCurrent }: { current: string; setCurrent: (s: stri
         <NavButton label="Agents" icon={Users} active={current === "agents"} onClick={() => setCurrent("agents")} />
         <NavButton label="About" icon={Building2} active={current === "about"} onClick={() => setCurrent("about")} />
         <NavButton label="Services" icon={Shield} active={current === "services"} onClick={() => setCurrent("services")} />
-        <NavButton label="Contact" icon={Phone} active={current === "contact" && <Contact />} onClick={() => setCurrent("contact")} />
+        <NavButton label="Contact" icon={Phone} active={current === "contact"} onClick={() => setCurrent("contact")} />
       </nav>
     </div>
   </header>
@@ -98,7 +100,6 @@ const Hero = () => (
             </a>
           </div>
         </div>
-
         <div className="rounded-3xl shadow-2xl p-1 bg-white/10">
           <div className="rounded-3xl p-8 bg-white text-neutral-900">
             <div className="flex items-start gap-3">
@@ -115,7 +116,6 @@ const Hero = () => (
             </div>
           </div>
         </div>
-
       </div>
     </Section>
   </div>
@@ -173,7 +173,7 @@ const MLSSearch = () => (
   </Section>
 );
 
-const AgentCard = ({ a }: { a: typeof AGENTS[number] }) => (
+const AgentCard = ({ a }) => (
   <div className="group rounded-2xl border bg-white/90 p-5 shadow-sm hover:shadow-lg transition-shadow">
     <div className="flex items-start justify-between gap-3">
       <div>
@@ -202,31 +202,35 @@ const Agents = () => (
   </Section>
 );
 
+// --- Services ---
+const ServiceCard = ({ title, desc }) => (
+  <div className="rounded-2xl border bg-white p-6 shadow-sm">
+    <h3 className="text-lg font-semibold">{title}</h3>
+    <p className="mt-2 text-neutral-600">{desc}</p>
+  </div>
+);
+
 const Services = () => (
   <Section id="services">
-    <div className="text-center mb-12">
-      <h2 className="text-3xl font-black tracking-tight">
-        Our <GradientText>Services</GradientText>
-      </h2>
-      <p className="text-neutral-600 mt-2">Comprehensive real estate solutions across Miami and all of Florida.</p>
+    <div className="text-center mb-8">
+      <h2 className="text-3xl font-black tracking-tight">Services</h2>
+      <p className="text-neutral-600 mt-2">
+        Full-service representation for residential &amp; investment real estate.
+      </p>
     </div>
-    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {[
-        { title: "Buying a Home", desc: "Guidance through every step of purchasing your dream home.", icon: Home },
-        { title: "Selling a Home", desc: "Marketing strategies and expert negotiation to maximize your sale.", icon: Globe },
-        { title: "Investment Properties", desc: "Identify and acquire profitable opportunities.", icon: Shield },
-        { title: "Rentals", desc: "Reliable rental solutions for tenants and landlords.", icon: Building2 },
-        { title: "Consulting", desc: "Advice on market trends, financing, and strategies.", icon: Users },
-        { title: "Commercial Properties", desc: "Sell, Buy or Lease your next Commercial Porperty with Us.", icon: MapPin },
-      ].map((s) => (
-        <div key={s.title} className="rounded-2xl border bg-white/90 p-6 shadow-sm hover:shadow-lg transition-shadow">
-          <div className="flex items-center gap-3 mb-3">
-            <s.icon className="text-purple-700" size={24} />
-            <h3 className="font-bold text-lg">{s.title}</h3>
-          </div>
-          <p className="text-sm text-neutral-600">{s.desc}</p>
-        </div>
-      ))}
+    <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <ServiceCard
+        title="Buyer Representation"
+        desc="Strategy, search, negotiation, inspections, lending guidance, and closing support."
+      />
+      <ServiceCard
+        title="Listing & Marketing"
+        desc="Pro photos/video, staging guidance, pricing strategy, digital ads, and MLS syndication."
+      />
+      <ServiceCard
+        title="Investors & Rentals"
+        desc="Acquisitions, rental analysis, tenant screening, and property positioning."
+      />
     </div>
   </Section>
 );
@@ -251,119 +255,26 @@ const Footer = () => (
     <div className="bg-neutral-950 text-white/70 text-xs py-3 text-center">© {new Date().getFullYear()} {BRAND.name}. All rights reserved.</div>
   </footer>
 );
-// ADD inside app/page.tsx
-
-const Contact = () => (
-  <Section id="contact">
-    <div className="text-center mb-8">
-      <h2 className="text-3xl font-black tracking-tight">
-        Get in <GradientText>Touch</GradientText>
-      </h2>
-      <p className="text-neutral-600 mt-2">
-        We’re ready to help with buying, selling, investing, and more.
-      </p>
-    </div>
-
-    <div className="grid lg:grid-cols-2 gap-6">
-      {/* Contact card */}
-      <div className="rounded-2xl border bg-white/90 p-6 shadow-sm">
-        <div className="space-y-3 text-sm">
-          <a href="tel:7868633549" className="flex items-center gap-2 hover:underline">
-            <Phone size={16} /> (786) 863-3549
-          </a>
-          <a href="mailto:gabriel@myarearealtor.com" className="flex items-center gap-2 hover:underline">
-            <Mail size={16} /> gabriel@myarearealtor.com
-          </a>
-          <div className="flex items-start gap-2">
-            <MapPin size={16} />
-            <span>8400 NW 33rd St, Doral, FL 33122</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Printer size={16} /> Fax: 1.866.882.1210
-          </div>
-        </div>
-
-        {/* Quick CTA buttons */}
-        <div className="mt-5 flex gap-3">
-          <a
-            href="mailto:gabriel@myarearealtor.com?subject=Area%20Co%20Inquiry"
-            className="inline-flex items-center gap-2 rounded-2xl px-4 py-2 font-semibold text-white"
-            style={{ background: "linear-gradient(135deg, #d414a4, #4b1ea8)" }}
-          >
-            Email Us
-          </a>
-          <a
-            href="tel:7868633549"
-            className="inline-flex items-center gap-2 rounded-2xl px-4 py-2 font-semibold border"
-          >
-            Call Now
-          </a>
-        </div>
-
-        {/* Simple form (submits via mailto for now) */}
-        <form
-          className="mt-6 grid gap-3"
-          action="mailto:gabriel@myarearealtor.com"
-          method="post"
-          encType="text/plain"
-        >
-          <input
-            required
-            name="name"
-            placeholder="Your name"
-            className="rounded-xl border px-3 py-2 outline-none"
-          />
-          <input
-            required
-            type="email"
-            name="email"
-            placeholder="Your email"
-            className="rounded-xl border px-3 py-2 outline-none"
-          />
-          <textarea
-            required
-            name="message"
-            placeholder="Tell us about your needs"
-            rows={4}
-            className="rounded-xl border px-3 py-2 outline-none"
-          />
-          <button
-            type="submit"
-            className="rounded-2xl px-4 py-2 font-semibold text-white"
-            style={{ background: "linear-gradient(135deg, #d414a4, #4b1ea8)" }}
-          >
-            Send Message
-          </button>
-        </form>
-      </div>
-
-      {/* Map */}
-      <div className="rounded-2xl overflow-hidden border shadow">
-        <iframe
-          title="Area Co Real Estate - Map"
-          width="100%"
-          height="100%"
-          className="min-h-[420px] w-full"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps?q=8400%20NW%2033rd%20St%2C%20Doral%2C%20FL%2033122&output=embed"
-        />
-      </div>
-    </div>
-  </Section>
-);
 
 export default function Page() {
-  const [current, setCurrent] = useState("home");
+  const [current, setCurrent] = useState("home"); // or "search" to make MLS default
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-900">
       <Header current={current} setCurrent={setCurrent} />
       {current === "home" && (<><Hero /><Photos /></>)}
       {current === "search" && <MLSSearch />}
       {current === "agents" && <Agents />}
-      {current === "about" && <Section id="about"><div className="text-neutral-600">About content coming soon.</div></Section>}
+      {current === "about" && (
+        <Section id="about">
+          <div className="text-neutral-600">About content coming soon.</div>
+        </Section>
+      )}
       {current === "services" && <Services />}
-      {current === "contact" && <Section id="contact"><div className="text-neutral-600">Contact form coming soon.</div></Section>}
+      {current === "contact" && (
+        <Section id="contact">
+          <div className="text-neutral-600">Contact form coming soon.</div>
+        </Section>
+      )}
       <Footer />
     </div>
   );
