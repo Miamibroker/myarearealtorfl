@@ -69,7 +69,7 @@ const Header = ({ current, setCurrent }: { current: string; setCurrent: (s: stri
         <NavButton label="MLS Search" icon={SearchIcon} active={current === "search"} onClick={() => setCurrent("search")} />
         <NavButton label="Agents" icon={Users} active={current === "agents"} onClick={() => setCurrent("agents")} />
         <NavButton label="About" icon={Building2} active={current === "about"} onClick={() => setCurrent("about")} />
-        <NavButton label="Services" icon={Shield} active={current === "services"} onClick={() => setCurrent("services")} />
+        <NavButton label="Services" icon={Shield} active={current === "services" && <Services />}</NavButton>} onClick={() => setCurrent("services")} />
         <NavButton label="Contact" icon={Phone} active={current === "contact"} onClick={() => setCurrent("contact")} />
       </nav>
     </div>
@@ -262,9 +262,17 @@ export default function Page() {
       {current === "home" && (<><Hero /><Photos /></>)}
       {current === "search" && <MLSSearch />}
       {current === "agents" && <Agents />}
-      {current === "about" && <Section id="about"><div className="text-neutral-600">About content coming soon.</div></Section>}
-      {current === "services" && <Section id="services"><div className="text-neutral-600">Services content coming soon.</div></Section>}
-      {current === "contact" && <Section id="contact"><div className="text-neutral-600">Contact form coming soon.</div></Section>}
+      {current === "about" && (
+        <Section id="about">
+          <div className="text-neutral-600">About content coming soon.</div>
+        </Section>
+      )}
+      {current === "services" && <Services />}
+      {current === "contact" && (
+        <Section id="contact">
+          <div className="text-neutral-600">Contact form coming soon.</div>
+        </Section>
+      )}
       <Footer />
     </div>
   );
