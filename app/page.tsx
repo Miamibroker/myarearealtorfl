@@ -217,7 +217,7 @@ const Services = () => (
         { title: "Investment Properties", desc: "Identify and acquire profitable opportunities.", icon: Shield },
         { title: "Rentals", desc: "Reliable rental solutions for tenants and landlords.", icon: Building2 },
         { title: "Consulting", desc: "Advice on market trends, financing, and strategies.", icon: Users },
-        { title: "Property Management", desc: "Protect and grow your investment with full-service management.", icon: MapPin },
+        { title: "Commercial Properties", desc: "Sell, Buy or Lease your next Commercial Porperty with Us.", icon: MapPin },
       ].map((s) => (
         <div key={s.title} className="rounded-2xl border bg-white/90 p-6 shadow-sm hover:shadow-lg transition-shadow">
           <div className="flex items-center gap-3 mb-3">
