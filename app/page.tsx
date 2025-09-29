@@ -86,7 +86,7 @@ const Hero = () => (
             Your <GradientText>Miami</GradientText> Experts —<br className="hidden sm:block" />
             Real Estate Across <GradientText>Florida</GradientText>
           </h1>
-          <p className="mt-4 text-white/90 max-w-prose">
+          <p className="mt-4 text-black/90 max-w-prose">
             We help buyers, sellers, and investors navigate South Florida and beyond with clarity and confidence.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
