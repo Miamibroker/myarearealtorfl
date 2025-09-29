@@ -70,7 +70,7 @@ const Header = ({ current, setCurrent }: { current: string; setCurrent: (s: stri
         <NavButton label="Agents" icon={Users} active={current === "agents"} onClick={() => setCurrent("agents")} />
         <NavButton label="About" icon={Building2} active={current === "about"} onClick={() => setCurrent("about")} />
         <NavButton label="Services" icon={Shield} active={current === "services"} onClick={() => setCurrent("services")} />
-        <NavButton label="Contact" icon={Phone} active={current === "contact"} onClick={() => setCurrent("contact")} />
+        <NavButton label="Contact" icon={Phone} active={current === "contact" && <Contact />} onClick={() => setCurrent("contact")} />
       </nav>
     </div>
   </header>
