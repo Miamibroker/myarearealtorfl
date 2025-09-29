@@ -58,7 +58,7 @@ const Header = ({ current, setCurrent }: { current: string; setCurrent: (s: stri
   <header className="sticky top-0 z-40 backdrop-blur bg-white/70 border-b border-white/40">
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
       <div className="flex items-center gap-3">
-        <img src={BRAND.logo} alt="Logo" className="h-9 w-9 rounded-full object-contain" />
+        <img src={BRAND.logo} alt="Logo" className="h-14 w-14 rounded-full object-contain" />
         <div className="leading-tight">
           <div className="font-black text-lg tracking-tight">{BRAND.name}</div>
           <div className="text-xs text-neutral-600">{BRAND.tagline}</div>
