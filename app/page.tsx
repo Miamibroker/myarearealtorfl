@@ -351,7 +351,7 @@ const Footer = () => (
         <div className="flex items-center gap-3">
           <img 
             src="/logo-white.png" 
-            alt="Area Co Real Estate Logo" 
+            alt="" 
             className="h-14 w-14 rounded-full object-contain" 
           />
           <div>
